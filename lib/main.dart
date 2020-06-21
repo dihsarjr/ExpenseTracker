@@ -1,6 +1,7 @@
 import 'package:expensetracker/transaction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,25 +21,25 @@ class HomePage extends StatelessWidget {
     Transaction(
       id: 't1',
       amount: 32.20,
-      title: 'new mobile',
+      title: 'NEW MOBILE',
       date: DateTime.now(),
     ),
     Transaction(
       id: 't2',
-      amount: 4000.20,
-      title: 'new car',
+      amount: 40.20,
+      title: 'NEW CAR',
       date: DateTime.now(),
     ),
     Transaction(
       id: 't3',
-      amount: 2000.20,
-      title: 'new bike',
+      amount: 20.20,
+      title: 'NEW BIKE',
       date: DateTime.now(),
     ),
     Transaction(
       id: 't4',
-      amount: 100.20,
-      title: 'new laptop',
+      amount: 10.20,
+      title: 'NEW LAPTOP',
       date: DateTime.now(),
     ),
   ];
@@ -70,20 +71,18 @@ class HomePage extends StatelessWidget {
           Column(
               children: transaction.map((tx) {
             return Card(
-              color: Colors.blue,
+              color: Colors.purple,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    width: 150,
-                    height: 80,
-                    padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(10),
                     margin: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.white, width: 2),
                     ),
                     child: Text(
-                      tx.amount.toString(),
+                      '\$${tx.amount}',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 30,
@@ -93,6 +92,7 @@ class HomePage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.all(10),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
                           tx.title,
@@ -103,11 +103,11 @@ class HomePage extends StatelessWidget {
                           textAlign: TextAlign.start,
                         ),
                         Text(
-                          tx.date.toString(),
+                          DateFormat().format(tx.date),
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.white),
+                              fontSize: 15,
+                              color: Colors.grey),
                           textAlign: TextAlign.center,
                         ),
                       ],
