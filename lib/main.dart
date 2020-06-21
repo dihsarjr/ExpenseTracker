@@ -103,7 +103,7 @@ class HomePage extends StatelessWidget {
                           textAlign: TextAlign.start,
                         ),
                         Text(
-                          DateFormat().format(tx.date),
+                          DateFormat('yyyy-MM-dd').format(tx.date),
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
