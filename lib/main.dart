@@ -70,39 +70,44 @@ class HomePage extends StatelessWidget {
           Column(
               children: transaction.map((tx) {
             return Card(
-              color: Colors.yellow,
+              color: Colors.blue,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Card(
-                    color: Colors.red,
-                    child: Container(
-                      color: Colors.red,
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        tx.amount.toString(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color: Colors.white),
-                      ),
+                  Container(
+                    width: 150,
+                    height: 80,
+                    padding: EdgeInsets.all(20),
+                    margin: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white, width: 2),
+                    ),
+                    child: Text(
+                      tx.amount.toString(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                          color: Colors.white),
                     ),
                   ),
                   Container(
-                    color: Colors.yellow,
                     margin: EdgeInsets.all(10),
                     child: Column(
                       children: <Widget>[
                         Text(
                           tx.title,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.white),
                           textAlign: TextAlign.start,
                         ),
                         Text(
                           tx.date.toString(),
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.white),
                           textAlign: TextAlign.center,
                         ),
                       ],
