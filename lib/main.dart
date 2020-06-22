@@ -43,6 +43,10 @@ class HomePage extends StatelessWidget {
       date: DateTime.now(),
     ),
   ];
+
+  final titleControl = TextEditingController();
+  final amountControl = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,8 +60,6 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
             margin: EdgeInsets.all(10),
@@ -66,6 +68,37 @@ class HomePage extends StatelessWidget {
             child: Card(
               color: Colors.red,
               child: Text('chart place'),
+            ),
+          ),
+          Card(
+            elevation: 5,
+            child: Container(
+              margin: EdgeInsets.all(10),
+              child: Column(
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Title'),
+                    controller: titleControl,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
+                    controller: amountControl,
+                  ),
+                  Card(
+                    color: Colors.purple,
+                    child: FlatButton(
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        child: Text('ADD'),
+                      ),
+                      onPressed: () {
+                        print(titleControl);
+                        print(amountControl);
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Column(
