@@ -13,6 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          primarySwatch: Colors.lightBlue, fontFamily: 'Baumans-Regular'),
       home: HomePage(),
     );
   }
@@ -84,7 +86,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
         title: Text(
           'Expense Tracker',
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -116,8 +117,10 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
         onPressed: () => startNewTX(context),
       ),
     );

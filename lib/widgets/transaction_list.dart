@@ -13,7 +13,7 @@ class TransactionList extends StatelessWidget {
       child: ListView.builder(
         itemBuilder: (ctx, index) {
           return Card(
-            color: Colors.purple,
+            color: Theme.of(context).primaryColor,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
