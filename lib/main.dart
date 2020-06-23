@@ -27,36 +27,36 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Transaction> transaction = [
-    Transaction(
-      id: 't1',
-      amount: 32.20,
-      title: 'NEW MOBILE',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      amount: 40.20,
-      title: 'NEW CAR',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't3',
-      amount: 20.20,
-      title: 'NEW BIKE',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't4',
-      amount: 10.20,
-      title: 'NEW LAPTOP',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't5',
-      amount: 10.20,
-      title: 'NEW lock',
-      date: DateTime.now(),
-    ),
+//    Transaction(
+//      id: 't1',
+//      amount: 32.20,
+//      title: 'NEW MOBILE',
+//      date: DateTime.now(),
+//    ),
+//    Transaction(
+//      id: 't2',
+//      amount: 40.20,
+//      title: 'NEW CAR',
+//      date: DateTime.now(),
+//    ),
+//    Transaction(
+//      id: 't3',
+//      amount: 20.20,
+//      title: 'NEW BIKE',
+//      date: DateTime.now(),
+//    ),
+//    Transaction(
+//      id: 't4',
+//      amount: 10.20,
+//      title: 'NEW LAPTOP',
+//      date: DateTime.now(),
+//    ),
+//    Transaction(
+//      id: 't5',
+//      amount: 10.20,
+//      title: 'NEW lock',
+//      date: DateTime.now(),
+//    ),
   ];
   void _newAdNewTransaction(String txTitle, double txAmount) {
     final _newTx = Transaction(
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           'Expense Tracker',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         actions: <Widget>[
           IconButton(
@@ -101,20 +101,47 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(10),
-              width: double.infinity,
-              color: Colors.red,
-              child: Card(
-                color: Colors.red,
-                child: Text('chart place'),
+        child: transaction.isEmpty
+            ? Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.fromLTRB(20, 50, 20, 0),
+                    child: Center(
+                      child: Text(
+                        'TRANSACTION IS EMPTY',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 30),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.add_circle,
+                      color: Colors.lightBlue,
+                    ),
+                    iconSize: 70,
+                    onPressed: () => startNewTX(context),
+                  ),
+                  Text(
+                    'ADD TRANSACTION',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )
+                ],
+              )
+            : Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    width: double.infinity,
+                    color: Colors.red,
+                    child: Card(
+                      color: Colors.red,
+                      child: Text('chart place'),
+                    ),
+                  ),
+                  TransactionList(transaction),
+                ],
               ),
-            ),
-            TransactionList(transaction),
-          ],
-        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(

@@ -36,25 +36,42 @@ class _NewTransactionsState extends State<NewTransactions> {
         margin: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
-            TextField(
-              decoration: InputDecoration(labelText: 'Title'),
-              controller: titleControl,
-              onSubmitted: (_) => submitFunction(),
-            ),
-            TextField(
-              decoration: InputDecoration(labelText: 'Amount'),
-              controller: amountControl,
-              keyboardType: TextInputType.number,
-              onSubmitted: (_) => submitFunction(),
-            ),
-            Card(
-              color: Colors.purple,
-              child: FlatButton(
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  child: Text('ADD'),
+            Container(
+              padding: EdgeInsets.all(5),
+              child: Card(
+                child: TextField(
+                  decoration: InputDecoration(labelText: ' Title'),
+                  controller: titleControl,
+                  onSubmitted: (_) => submitFunction(),
                 ),
-                onPressed: submitFunction,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(5),
+              child: Card(
+                child: TextField(
+                  decoration: InputDecoration(labelText: ' Amount'),
+                  controller: amountControl,
+                  keyboardType: TextInputType.number,
+                  onSubmitted: (_) => submitFunction(),
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(10),
+              child: Card(
+                color: Colors.lightBlue,
+                child: FlatButton(
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'ADD',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  onPressed: submitFunction,
+                ),
               ),
             ),
           ],
