@@ -1,3 +1,4 @@
+import 'package:expensetracker/widgets/chart.dart';
 import 'package:expensetracker/widgets/new_transactions.dart';
 import 'package:expensetracker/widgets/transaction_list.dart';
 import 'package:flutter/cupertino.dart';
@@ -58,6 +59,14 @@ class _HomePageState extends State<HomePage> {
 //      date: DateTime.now(),
 //    ),
   ];
+  List<Transaction> get _recentTransaction {
+    return transaction.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(Duration(days: 7)),
+      );
+    }).toList();
+  }
+
   void _newAdNewTransaction(String txTitle, double txAmount) {
     final _newTx = Transaction(
       id: DateTime.now().toString(),
@@ -130,15 +139,7 @@ class _HomePageState extends State<HomePage> {
               )
             : Column(
                 children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    width: double.infinity,
-                    color: Colors.red,
-                    child: Card(
-                      color: Colors.red,
-                      child: Text('chart place'),
-                    ),
-                  ),
+                  Chart(_recentTransaction),
                   TransactionList(transaction),
                 ],
               ),
